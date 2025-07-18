@@ -1,5 +1,5 @@
 # StudyBank
-#### Video Demo: [https://youtu.be/MYmiYodFhJ4?feature=shared](https://youtu.be/MYmiYodFhJ4?feature=shared)
+#### Video Demo: 
 #### Description:
 **StudyBank** is a web-based application developed using Flask that serves as a centralized, searchable repository for university question papers. The purpose of this project is to simplify the process of accessing past exam papers, allowing students to revise effectively while also contributing to a verified and organized database for future learners.
 
