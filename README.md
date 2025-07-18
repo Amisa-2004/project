@@ -89,7 +89,7 @@ To run StudyBank locally:
 
 1. Clone the repository
     ```
-    git clone <repo-url><br />
+    git clone https://github.com/Amisa-2004/project.git<br />
     cd studybank
     ```
 2. Set up a virtual environment:
