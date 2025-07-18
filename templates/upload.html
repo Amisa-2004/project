@@ -1,0 +1,67 @@
+<!-- templates/upload.html -->
+{% extends "layout.html" %} {% block title %} Upload {% endblock %} {% block
+content %}
+<div class="container">
+  <h2>Upload Previous Year Papers</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input
+      autofocus
+      autocomplete="off"
+      class="form-control mb-2"
+      name="department"
+      placeholder="Department"
+      required
+    />
+    <input
+      autocomplete="off"
+      class="form-control mb-2"
+      name="semester"
+      placeholder="Semester"
+      required
+    />
+    <input
+      autocomplete="off"
+      class="form-control mb-2"
+      name="subject"
+      placeholder="Subject Code"
+      required
+    />
+    <select class="form-control mb-2" name="exam" required>
+      <option value="" disabled selected>Exam Type</option>
+      <option value="midsem">Mid-Semester</option>
+      <option value="endsem">End-Semester</option>
+    </select>
+    <input
+      autocomplete="off"
+      class="form-control mb-2"
+      name="year"
+      placeholder="Year"
+      required
+    />
+    <input
+      class="form-control mb-2"
+      type="file"
+      name="file"
+      accept="application/pdf"
+      required
+    />
+
+    <!--Google Captcha Widget-->
+    <div class="g-recaptcha" data-sitekey="6LeXW4crAAAAAHzxILVdWd6mbqw8_QpBVRXKeVit"></div>
+    
+    <br>
+    <button class="btn btn-primary" type="submit">Upload  <i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+  </form>
+
+  <!--Errors-->
+  {% if errors %} {% for error_message in errors %}
+  <div class="alert alert-danger text-center alert-dismissable">
+    {{ error_message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %} {% endif %}
+</div>
+
+<!--reCAPTCHA script-->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!-- templates/results.html -->
+{% extends "layout.html" %} {% block title %} Results {% endblock %} 
+{% block content %}
+<!--Display results in form of a table-->
+<div class="container">
+  <table class="table table-striped table-hover text-center">
+    <thead class="table-light">
+      <tr>
+        <th>Department</th>
+        <th>Semester</th>
+        <th>Subject</th>
+        <th>Exam</th>
+        <th>Year</th>
+        <th>File</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in verified_results %}
+      <tr>
+        <td>{{ row.department }}</td>
+        <td>{{ row.semester }}</td>
+        <td>{{ row.subject }}</td>
+        <td>{{ row.exam }}</td>
+        <td>{{ row.year }}</td>
+        <td>
+          <a href="/uploads/{{ row.filename }}" target="_blank"
+            >{{ row.filename }}</a
+          ><span class="verified">Verified</span>
+        </td>
+      </tr>
+      {% endfor %} {% for row in results %}
+      <tr>
+        <td>{{ row.department }}</td>
+        <td>{{ row.semester }}</td>
+        <td>{{ row.subject }}</td>
+        <td>{{ row.exam }}</td>
+        <td>{{ row.year }}</td>
+        <td>
+          <a href="/uploads/{{ row.filename }}" target="_blank"
+            >{{ row.filename }}</a
+          ><span class="unverified">Unverified</span>
+        </td>
+      </tr>
+      {% endfor %}
+      <!--If no results found-->
+      {% if not (verified_results or results) %}
+      <tr>
+        No results found.
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

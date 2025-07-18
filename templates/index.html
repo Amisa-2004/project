@@ -1,0 +1,71 @@
+<!-- templates/index.html -->
+{% extends "layout.html" %} {% block title %} StudyBank {% endblock %} {% block
+content %}
+<div>
+  <!--Hero Section-->
+  <section class="text-center py-5">
+    <h1 class="display-5 fw-bold mb-3">
+      Access & Share Previous Year Question Papers
+    </h1>
+    <p class="lead mb-4" style="color: white">
+      Helping students prepare better with verified and categorised question
+      papers from your university.
+    </p>
+    
+  </section>
+
+<!-- Carousel -->
+<div id="pyqCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    {% for pyq in pyqs %}
+    <div class="carousel-item {% if loop.first %}active{% endif %}">
+      <div class="d-flex justify-content-center">
+        <div class="card mx-2">
+          <div class="card-body text-center" style="background-color: #f8f9fd">
+            <h5 class="card-title">Subject: {{ pyq.subject }}</h5>
+            <p class="card-text">Semester: {{ pyq.semester }}</p>
+            <p class="card-text">Year: {{ pyq.year }}</p>
+            <br />
+            <a
+              href="{{ url_for('download', filename=pyq.filename) }}"
+              class="btn btn-primary"
+              >Download <i class="fa-solid fa-file-arrow-down"></i></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Carousel controls -->
+  <button
+    class="carousel-control-prev carousel-btn"
+    type="button"
+    data-bs-target="#pyqCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button
+    class="carousel-control-next carousel-btn"
+    type="button"
+    data-bs-target="#pyqCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+  <!--Errors-->
+  {% if errors %} {% for error_message in errors %}
+  <div class="alert alert-danger text-center alert-dismissable">
+    {{ error_message }}
+  </div>
+  {% endfor %} {% endif %} {% if success_message %}
+  <div class="alert alert-success text-center alert-dismissable">
+    {{ success_message }}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!-- templates/search.html -->
+{% extends "layout.html" %} {% block title %} StudyBank {% endblock %} {% block
+content %}
+<div class="container">
+  <h2>Find Previous Year Papers</h2>
+  <form action="/search" method="POST">
+    <input
+      autofocus
+      autocomplete="off"
+      class="form-control mb-2"
+      name="department"
+      placeholder="Department"
+      required
+    />
+    <input
+      autocomplete="off"
+      class="form-control mb-2"
+      name="semester"
+      placeholder="Semester"
+      required
+    />
+    <input
+      autocomplete="off"
+      class="form-control mb-2"
+      name="subject"
+      placeholder="Subject Code"
+      required
+    />
+    <input
+      autocomplete="off"
+      class="form-control mb-2"
+      name="year"
+      placeholder="Year"
+      required
+    />
+    <select class="form-control mb-2" name="exam" required>
+      <option value="" disabled selected>Exam Type</option>
+      <option value="midsem">Mid-Semester</option>
+      <option value="endsem">End-Semester</option>
+    </select>
+    <button class="btn btn-primary" type="submit">Search  <i class="fa-solid fa-magnifying-glass"></i></button>
+  </form>
+
+  <!--Errors-->
+  {% if errors %} {% for error_message in errors %}
+  <div class="alert alert-danger text-center alert-dismissable">
+    {{ error_message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %} {% endif %}
+</div>
+{% endblock %}
